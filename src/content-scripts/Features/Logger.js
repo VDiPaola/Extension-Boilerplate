@@ -4,6 +4,6 @@ export class Logger{
         console.log(message)
     }
     static error(message, error=null, display=false){
-        console.error(`Kick Plus: ${message} ${error ? "\n Additional information: " + error : ""}`)
+        console.error(`Extension: ${message} ${error ? "\n Additional information: " + error : ""}`)
     }
 }
