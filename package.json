@@ -4,7 +4,6 @@
   "description": "",
   "scripts": {
     "build": "webpack --config ./webpack.config.js",
-    "build:dev": "webpack --config ./webpack.config.js --mode development",
     "type-check": "tsc --noEmit",
     "publish": "powershell compress-archive -Force './dist','./manifest.json','./styles','./icon.png' Extension.zip",
     "publish:firefox": "7z a Extension.zip dist popup styles manifest.json icon.png"
