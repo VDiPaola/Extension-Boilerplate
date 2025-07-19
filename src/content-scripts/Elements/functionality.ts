@@ -1,15 +1,18 @@
 export class Draggable{
- static dragElement(dragEl, moveEl=null) {
+ static dragElement(dragEl: HTMLElement, moveEl: HTMLElement | null = null) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   if (document.getElementById(dragEl.id + "header")) {
     /* if present, the header is where you move the DIV from:*/
-    document.getElementById(dragEl.id + "header").onmousedown = dragMouseDown;
+    const header = document.getElementById(dragEl.id + "header");
+    if (header) {
+      header.onmousedown = dragMouseDown;
+    }
   } else {
     /* otherwise, move the DIV from anywhere inside the DIV:*/
     dragEl.onmousedown = dragMouseDown;
   }
 
-  function dragMouseDown(e) {
+  function dragMouseDown(e: MouseEvent) {
     e = e || window.event;
     e.preventDefault();
     // get the mouse cursor position at startup:
@@ -20,7 +23,7 @@ export class Draggable{
     document.onmousemove = elementDrag;
   }
 
-  function elementDrag(e) {
+  function elementDrag(e: MouseEvent) {
     e = e || window.event;
     e.preventDefault();
     // calculate the new cursor position:
@@ -32,7 +35,7 @@ export class Draggable{
     const el = (moveEl ?? dragEl);
     el.style.top = (el.offsetTop - pos2) + "px";
     el.style.left = (el.offsetLeft - pos1) + "px";
-    el.style.right = null;
+    el.style.right = "";
   }
 
   function closeDragElement() {
@@ -42,7 +45,7 @@ export class Draggable{
   }
 }
 
-  static StopDragElement(el){
+  static StopDragElement(el: HTMLElement){
     document.onmouseup = null;
     document.onmousemove = null;
     el.onmousedown = null;

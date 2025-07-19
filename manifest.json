@@ -10,7 +10,6 @@
     },
 
     "permissions": [
-        "cookies",
         "storage",
         "scripting"
     ],
@@ -24,7 +23,7 @@
         "matches":    ["*://*.something.com/*"],
         "js":         ["./dist/content-scripts/main.js"]
     },{
-        "css": [ "./styles/main.css","./styles/settings.css" ],
+        "css": [ "./styles/main.css" ],
         "matches":    ["*://*.something.com/*"]
      } ],
 

@@ -1,11 +1,11 @@
 //executes function in main 'world'
-export async function execScript(tabId, func, args=[]) {
+export async function execScript(tabId: number | undefined, func: (...args: any[]) => unknown, args: any[] = []) {
     const [{result}] = await chrome.scripting.executeScript({
       func,
       args,
       target: {
         tabId: tabId ??
-          (await chrome.tabs.query({active: true, currentWindow: true}))[0].id
+          (await chrome.tabs.query({active: true, currentWindow: true}))[0].id!
       },
       world: 'MAIN',
     });
